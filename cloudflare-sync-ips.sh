@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CLOUDFLARE_FILE_PATH=${1:-/etc/nginx/cloudflare}
+CLOUDFLARE_FILE_PATH=${1:-/usr/local/openresty/nginx/cloudlfare.ips}
 
 echo "#Cloudflare" > $CLOUDFLARE_FILE_PATH;
 echo "" >> $CLOUDFLARE_FILE_PATH;
@@ -20,4 +20,5 @@ echo "" >> $CLOUDFLARE_FILE_PATH;
 echo "real_ip_header CF-Connecting-IP;" >> $CLOUDFLARE_FILE_PATH;
 
 #test configuration and reload nginx
-nginx -t && systemctl reload nginx
+#nginx -t && systemctl reload nginx
+openresty -t && openresty -s reload
